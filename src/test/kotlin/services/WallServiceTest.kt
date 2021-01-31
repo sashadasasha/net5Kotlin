@@ -3,6 +3,8 @@ package services
 import dataClasses.*
 import org.junit.Assert.*
 import org.junit.Test
+import services.WallService.add
+import services.WallService.update
 
 
 /**
@@ -113,11 +115,9 @@ class WallServiceTest {
         donut = Donut(false, 0, Placeholder(), false, ""),
         postponedId = 2)
 
-    val wallService = WallService();
-
     @Test
     fun addFunctionTest() {
-        val result = wallService.add(post1);
+        val result = add(post1);
         println(result.id)
         assertEquals(result, post1)
     }
@@ -125,10 +125,10 @@ class WallServiceTest {
     @Test
     fun updateFunction_updateExistPost() {
         val expected = true;
-        println(wallService.add(post1).id)
-        println(wallService.add(post2).id)
-        println(wallService.add(post3).id)
-        val result = wallService.update(post2ForUpdate)
+        println(add(post1).id)
+        println(add(post2).id)
+        println(add(post3).id)
+        val result = update(post2ForUpdate)
         assertEquals(expected, result)
 
     }
@@ -136,9 +136,9 @@ class WallServiceTest {
     @Test
     fun updateFunction_updateUnexistPost() {
         val expected = false;
-        wallService.add(post1)
-        wallService.add(post2)
-        val result = wallService.update(post3)
+        add(post1)
+        add(post2)
+        val result = update(post3)
         assertEquals(expected, result)
 
     }

@@ -5,8 +5,8 @@ import dataClasses.*
 /**
  * Created by Kornyukhina Sasha on 31.01.2021 20:48
  */
-class WallService {
-    var posts = emptyArray<Post>()
+object WallService {
+    private var posts = emptyArray<Post>()
 
     /**
      * Пока так назначать id буду
