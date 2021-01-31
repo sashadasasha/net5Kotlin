@@ -138,7 +138,6 @@ class WallServiceTest {
         val expected = false;
         wallService.add(post1)
         wallService.add(post2)
-        wallService.add(post3)
         val result = wallService.update(post3)
         assertEquals(expected, result)
 
