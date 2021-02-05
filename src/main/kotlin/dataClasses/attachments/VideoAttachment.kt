@@ -1,9 +1,8 @@
 package dataClasses.attachments
 
+import dataClasses.attachments.units.Video
+
 data class VideoAttachment (
     override val type: String = "Video",
-    override val id: Int,
-    override val albumId: Int,
-    override val ownerId: Int,
-    override val userId: Int
+    val video : Video
 ) : Attachment
