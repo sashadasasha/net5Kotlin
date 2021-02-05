@@ -1,9 +1,8 @@
 package dataClasses.attachments
 
+import dataClasses.attachments.units.Photo
+
 data class PhotoAttachment(
     override val type : String = "Photo",
-    override val id: Int,
-    override val albumId: Int,
-    override val ownerId: Int,
-    override val userId: Int
+    val photo : Photo
 ) : Attachment

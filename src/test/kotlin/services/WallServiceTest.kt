@@ -3,6 +3,8 @@ package services
 import dataClasses.*
 import dataClasses.attachments.PhotoAttachment
 import dataClasses.attachments.VideoAttachment
+import dataClasses.attachments.units.Photo
+import dataClasses.attachments.units.Video
 import org.junit.Assert.*
 import org.junit.Test
 import services.WallService.add
@@ -38,8 +40,8 @@ class WallServiceTest {
         isFavorite  = false,
         donut = null,
         postponedId = 2,
-        attachments = arrayOf(PhotoAttachment(id = 2, albumId = 3, ownerId = 5, userId = 3),
-                            VideoAttachment(id = 5, albumId = 4 ,ownerId = 5, userId = 5)))
+        attachments = arrayOf(PhotoAttachment(photo = Photo(id = 5, albumId = 4 ,ownerId = 5, userId = 5)),
+                            VideoAttachment(video = Video (id = 3, albumId = 2 ,ownerId = 5, userId = 5))))
 
     val post2 = Post(
         id = 0,
