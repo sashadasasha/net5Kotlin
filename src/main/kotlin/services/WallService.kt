@@ -12,9 +12,9 @@ object WallService {
      * Пока так назначать id буду
      */
     fun add(post: Post): Post {
-        if (posts.isEmpty()) post.id = 1;
-        else post.id = posts.last().id + 1
-        posts += post
+        val newId = if (posts.isEmpty())  1 else posts.last().id + 1
+        val newPost = post.copy(id = newId)
+        posts += newPost
         return posts.last()
     }
 

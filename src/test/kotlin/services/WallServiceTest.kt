@@ -21,10 +21,10 @@ class WallServiceTest {
         replyOwnerId = 1,
         replyPostId = 1,
         friendsOnly = false,
-        comments = Comment(8, true, true, true, true),
-        copyright = Copyright(6, "", "", ""),
-        likes = Like(36, true, true, true),
-        reposts = Repost(4, true),
+        comments = null,
+        copyright = null,
+        likes = null,
+        reposts = null,
         views = View(96),
         postType = "",
         signerId = 2,
@@ -34,7 +34,7 @@ class WallServiceTest {
         isPinned = false,
         markedAsAds = false,
         isFavorite  = false,
-        donut = Donut(false, 0, Placeholder(), false, ""),
+        donut = null,
         postponedId = 2)
 
     val post2 = Post(
@@ -118,16 +118,12 @@ class WallServiceTest {
     @Test
     fun addFunctionTest() {
         val result = add(post1);
-        println(result.id)
-        assertEquals(result, post1)
+        assertEquals(result, post1.copy(id = 1))
     }
 
     @Test
     fun updateFunction_updateExistPost() {
         val expected = true;
-        println(add(post1).id)
-        println(add(post2).id)
-        println(add(post3).id)
         val result = update(post2ForUpdate)
         assertEquals(expected, result)
 
