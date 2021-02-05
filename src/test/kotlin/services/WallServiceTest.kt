@@ -1,6 +1,8 @@
 package services
 
 import dataClasses.*
+import dataClasses.attachments.PhotoAttachment
+import dataClasses.attachments.VideoAttachment
 import org.junit.Assert.*
 import org.junit.Test
 import services.WallService.add
@@ -35,7 +37,9 @@ class WallServiceTest {
         markedAsAds = false,
         isFavorite  = false,
         donut = null,
-        postponedId = 2)
+        postponedId = 2,
+        attachments = arrayOf(PhotoAttachment(id = 2, albumId = 3, ownerId = 5, userId = 3),
+                            VideoAttachment(id = 5, albumId = 4 ,ownerId = 5, userId = 5)))
 
     val post2 = Post(
         id = 0,
@@ -61,7 +65,8 @@ class WallServiceTest {
         markedAsAds = false,
         isFavorite  = false,
         donut = Donut(false, 0, Placeholder(), false, ""),
-        postponedId = 2)
+        postponedId =2,
+        attachments = null)
 
     val post2ForUpdate = Post(
         id = 3,
@@ -87,7 +92,8 @@ class WallServiceTest {
         markedAsAds = false,
         isFavorite  = false,
         donut = Donut(false, 0, Placeholder(), false, ""),
-        postponedId = 2)
+        postponedId = 2,
+        attachments = null)
 
     val post3 = Post(
         id = 0,
@@ -113,17 +119,21 @@ class WallServiceTest {
         markedAsAds = false,
         isFavorite  = false,
         donut = Donut(false, 0, Placeholder(), false, ""),
-        postponedId = 2)
+        postponedId = 2,
+        attachments = null)
 
     @Test
     fun addFunctionTest() {
         val result = add(post1);
-        assertEquals(result, post1.copy(id = 1))
+        assertEquals(post1.copy(id = 6), result)
     }
 
     @Test
     fun updateFunction_updateExistPost() {
         val expected = true;
+        add(post1)
+        add(post2)
+        add(post3)
         val result = update(post2ForUpdate)
         assertEquals(expected, result)
 

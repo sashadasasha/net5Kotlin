@@ -6,8 +6,7 @@ import dataClasses.*
  * Created by Kornyukhina Sasha on 31.01.2021 20:48
  */
 object WallService {
-    private var posts = emptyArray<Post>()
-
+     private var posts = emptyArray<Post>()
     /**
      * Пока так назначать id буду
      */
@@ -22,7 +21,7 @@ object WallService {
         for ((index, postInArray) in posts.withIndex()) {
             if (postInArray.id == post.id) {
                 val newVersionOfPost = posts[index].copy(
-                    ownerId = post.ownerId,
+                ownerId = post.ownerId,
                 fromId = post.fromId,
                 createdBy = post.createdBy,
                 text = post.text,

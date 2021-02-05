@@ -1,5 +1,7 @@
 package dataClasses
 
+import dataClasses.attachments.Attachment
+
 /**
  * Created by Kornyukhina Sasha on 31.01.2021 20:23
  */
@@ -26,5 +28,6 @@ data class Post (var id : Int,
                  val markedAsAds : Boolean,
                  val isFavorite : Boolean,
                  val donut : Donut?,
-                 val postponedId : Int) {
+                 val postponedId : Int,
+                 val attachments: Array<Attachment>?) {
 }
