@@ -37,7 +37,8 @@ class WallServiceTest {
         markedAsAds = false,
         isFavorite  = false,
         donut = Donut(false, 0, Placeholder(), false, ""),
-        postponedId = 2)
+        postponedId = 2,
+        attachments = null)
 
     val post2 = Post(
         id = 0,
@@ -63,7 +64,8 @@ class WallServiceTest {
         markedAsAds = false,
         isFavorite  = false,
         donut = Donut(false, 0, Placeholder(), false, ""),
-        postponedId = 2)
+        postponedId = 2,
+        attachments = null)
 
     val post2ForUpdate = Post(
         id = 3,
@@ -89,7 +91,8 @@ class WallServiceTest {
         markedAsAds = false,
         isFavorite  = false,
         donut = Donut(false, 0, Placeholder(), false, ""),
-        postponedId = 2)
+        postponedId = 2,
+        attachments = null)
 
     val post3 = Post(
         id = 0,
@@ -115,7 +118,8 @@ class WallServiceTest {
         markedAsAds = false,
         isFavorite  = false,
         donut = Donut(false, 0, Placeholder(), false, ""),
-        postponedId = 2)
+        postponedId = 2,
+        attachments = null)
 
     @Test
     fun createCommentTest_PostIsFound() {
@@ -132,7 +136,7 @@ class WallServiceTest {
 
     @Test
     fun addFunctionTest() {
-        val result = add(post1);
+        val result = add(post1)
         val expected = post1.copy(id = 7)
         println(result.id)
         assertEquals(result, expected)
