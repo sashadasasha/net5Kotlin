@@ -1,5 +1,7 @@
 package dataClasses
 
+import dataClasses.attachments.Attachment
+
 /**
  * Created by Kornyukhina Sasha on 31.01.2021 20:23
  */
@@ -12,11 +14,11 @@ data class Post (var id : Int,
                  val replyOwnerId : Int,
                  val replyPostId : Int,
                  val friendsOnly : Boolean,
-                 val comments : Comment,
-                 val copyright : Copyright,
-                 val likes : Like,
-                 val reposts : Repost,
-                 val views : View,
+                 val comments : Comment?,
+                 val copyright : Copyright?,
+                 val likes : Like?,
+                 val reposts : Repost?,
+                 val views : View?,
                  val postType : String,
                  val signerId : Int,
                  val canPin : Boolean,
@@ -25,6 +27,7 @@ data class Post (var id : Int,
                  val isPinned : Boolean,
                  val markedAsAds : Boolean,
                  val isFavorite : Boolean,
-                 val donut : Donut,
-                 val postponedId : Int) {
+                 val donut : Donut?,
+                 val postponedId : Int,
+                 val attachments: Array<Attachment>?) {
 }
