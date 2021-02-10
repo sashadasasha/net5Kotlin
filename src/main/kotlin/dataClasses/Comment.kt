@@ -1,9 +1,7 @@
 package dataClasses
 
-data class Comment (val count : Int,
-                    val canPost : Boolean,
-                    val groupsCanPost : Boolean,
-                    val canClose : Boolean,
-                    val canOpen : Boolean) {
+data class Comment (val ownerId : Int,
+                    val postId : Int,
+                    val message : String) {
 
 }

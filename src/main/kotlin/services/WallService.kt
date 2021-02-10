@@ -1,19 +1,27 @@
 package services
 
 import dataClasses.*
+import exceptions.PostNotFoundException
 
 /**
  * Created by Kornyukhina Sasha on 31.01.2021 20:48
  */
 object WallService {
     private var posts = emptyArray<Post>()
+    private var comments = emptyArray<Comment>()
 
-    /**
-     * Пока так назначать id буду
-     */
+
+    fun createComment (comment : Comment) : Boolean {
+        for (post in posts) {
+            if (post.id == comment.postId) {
+                comments += comment
+                return true
+            } else throw PostNotFoundException("Post is not exist")
+        }
+        throw PostNotFoundException("Post is not exist")
+    }
     fun add(post: Post): Post {
-        if (posts.isEmpty()) post.id = 1;
-        else post.id = posts.last().id + 1
+        post.id = if (posts.isEmpty()) 1 else posts.last().id + 1
         posts += post
         return posts.last()
     }

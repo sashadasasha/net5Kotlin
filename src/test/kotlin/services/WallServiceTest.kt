@@ -1,9 +1,11 @@
 package services
 
 import dataClasses.*
+import exceptions.PostNotFoundException
 import org.junit.Assert.*
 import org.junit.Test
 import services.WallService.add
+import services.WallService.createComment
 import services.WallService.update
 
 
@@ -21,7 +23,7 @@ class WallServiceTest {
         replyOwnerId = 1,
         replyPostId = 1,
         friendsOnly = false,
-        comments = Comment(8, true, true, true, true),
+        comments = Comment(8, 1, "Comm"),
         copyright = Copyright(6, "", "", ""),
         likes = Like(36, true, true, true),
         reposts = Repost(4, true),
@@ -47,7 +49,7 @@ class WallServiceTest {
         replyOwnerId = 1,
         replyPostId = 1,
         friendsOnly = true,
-        comments = Comment(3, true, true, true, true),
+        comments = Comment(3, 2,"Some comment"),
         copyright = Copyright(1, "", "", ""),
         likes = Like(69, true, true, true),
         reposts = Repost(32, true),
@@ -73,7 +75,7 @@ class WallServiceTest {
         replyOwnerId = 1,
         replyPostId = 1,
         friendsOnly = true,
-        comments = Comment(3, true, true, true, true),
+        comments = Comment(3, 3, "Comment"),
         copyright = Copyright(1, "", "", ""),
         likes = Like(69, true, true, true),
         reposts = Repost(32, true),
@@ -99,7 +101,7 @@ class WallServiceTest {
         replyOwnerId = 1,
         replyPostId = 1,
         friendsOnly = true,
-        comments = Comment(15, true, true, true, true),
+        comments = Comment(15, 3, "smth"),
         copyright = Copyright(6, "", "", ""),
         likes = Like(152, true, true, true),
         reposts = Repost(10, true),
@@ -116,18 +118,32 @@ class WallServiceTest {
         postponedId = 2)
 
     @Test
+    fun createCommentTest_PostIsFound() {
+        add(post1)
+        val result = createComment(Comment(5,1, "Some message"))
+        assertEquals(true, result);
+
+    }
+
+    @Test(expected = PostNotFoundException::class)
+    fun createCommentTest_PostIsNotFound() {
+        createComment(Comment(3,25, "mes"))
+    }
+
+    @Test
     fun addFunctionTest() {
         val result = add(post1);
+        val expected = post1.copy(id = 7)
         println(result.id)
-        assertEquals(result, post1)
+        assertEquals(result, expected)
     }
 
     @Test
     fun updateFunction_updateExistPost() {
         val expected = true;
-        println(add(post1).id)
-        println(add(post2).id)
-        println(add(post3).id)
+        add(post1)
+        add(post2)
+        add(post3)
         val result = update(post2ForUpdate)
         assertEquals(expected, result)
 
