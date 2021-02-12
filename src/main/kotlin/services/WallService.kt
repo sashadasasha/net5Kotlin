@@ -16,7 +16,7 @@ object WallService {
             if (post.id == comment.postId) {
                 comments += comment
                 return true
-            } else throw PostNotFoundException("Post is not exist")
+            }
         }
         throw PostNotFoundException("Post is not exist")
     }
